@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "AddPost";
+}
+<script>notsignedin();</script>
+@{
+    if (Session["signedin"] == "1")
+    {
+        <script>signedin();</script>
+    }
+}
+
+<h2>Add a new Article</h2>
+
+<form action="/CRUD/SubmitPost" method="post">
+    Title: <input type="text" name="title"><br />
+    Contents:<br />
+    <textarea name="contents" rows="5" cols="100"></textarea>
+    <br />
+
+    Page:  <select name="page">
+    <option value="index">Index</option>
+    <option value="about">About</option>
+    <option value="contact">Contact</option>
+    </select>
+    <input type="submit" value="Submit">
+
+</form>
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+        function signedin() {
+            document.getElementById('signin').style.visibility = 'hidden';
+            document.getElementById('CMS').style.visibility = 'visible';
+            document.getElementById('CMS1').style.visibility = 'visible';
+        }
+
+        function notsignedin() {
+            document.getElementById('signin').style.visibility = 'visible';
+            document.getElementById('CMS').style.visibility = 'hidden';
+            document.getElementById('CMS1').style.visibility = 'hidden';
+        }
+    </script>
+}

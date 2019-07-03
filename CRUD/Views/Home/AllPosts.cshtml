@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "AllPosts";
+}
+
+<script>notsignedin();</script>
+@{
+    if (Session["signedin"] == "1")
+    {
+        <script>signedin();</script>
+    }
+}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+@*<h1>@a.Title</h1>
+    <p>@a.Contents</p>*@
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Contents</th>
+        <th>Page</th>
+    </tr>
+    <tr>
+        @foreach (var d in ViewBag.articlelist)
+        {
+        <tr>
+            <td>@d.Title</td>
+            <td>@d.Contents</td>
+            <td>@d.Category</td>
+            <td>
+                @Html.ActionLink("Edit", "EditArticle", "CRUD", new { id = @d.PostID }, null)<br />
+                @Html.ActionLink("Delete", "Delete", "CRUD", new { id = @d.PostID }, null)
+            </td>
+        </tr>
+
+    }
+
+    </table>
+    @section scripts
+    {
+        <script type="text/javascript">
+
+            function signedin() {
+                document.getElementById('signin').style.visibility = 'hidden';
+                document.getElementById('CMS').style.visibility = 'visible';
+                document.getElementById('CMS1').style.visibility = 'visible';
+            }
+
+            function notsignedin() {
+                document.getElementById('signin').style.visibility = 'visible';
+                document.getElementById('CMS').style.visibility = 'hidden';
+                document.getElementById('CMS1').style.visibility = 'hidden';
+            }
+        </script>
+    }

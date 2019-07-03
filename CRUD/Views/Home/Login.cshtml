@@ -1,0 +1,37 @@
+﻿<script>notsignedin();</script>
+@{
+    if (Session["signedin"] == "1")
+    {
+        <script>signedin();</script>
+    }
+}
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form action="/Home/LoggedIn" method="post">
+    Username: <input type="text" name="username"><br>
+    Password: <input type="password" name="password"><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+@section scripts
+    {
+    <script type="text/javascript">
+        function signedin() {
+            document.getElementById('signin').style.visibility = 'hidden';
+            document.getElementById('CMS').style.visibility = 'visible';
+            document.getElementById('CMS1').style.visibility = 'visible';
+        }
+
+        function notsignedin() {
+            document.getElementById('signin').style.visibility = 'visible'
+            document.getElementById('CMS').style.visibility = 'hidden'
+            document.getElementById('CMS1').style.visibility = 'hidden'
+        }
+    </script>
+}

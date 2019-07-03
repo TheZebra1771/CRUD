@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+<h2>AllUsers</h2>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Page</th>
+    </tr>
+    <tr>
+        @foreach (var d in ViewBag.userlist)
+        {
+        <tr>
+            <td>@d.username</td>
+            <td>@d.password</td>
+            <td>@d.authority</td>
+            <td>
+                @*@Html.ActionLink("Edit", "EditArticle", "CRUD", new { id = @d.PostID }, null)<br />
+                @Html.ActionLink("Delete", "Delete", "CRUD", new { id = @d.PostID }, null)*@
+            </td>
+        </tr>
+
+    }
+
+    </table>

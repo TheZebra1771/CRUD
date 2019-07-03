@@ -1,0 +1,35 @@
+﻿<script>notsignedin();</script>
+@{
+    if (Session["signedin"] == "1")
+    {
+        <script>signedin();</script>
+    }
+}
+@{
+    ViewBag.Title = "EditArticle";
+}
+
+<h2>EditArticle</h2>
+
+<form action="/CRUD/EditArticleP2" method="post">
+    Title: <input type="text" name="title" value=@ViewBag.Edited.Title><br>
+    <textarea name="contents" rows="10" cols="80">@ViewBag.Edited.Contents</textarea>
+    <input type="submit" value="Submit">
+</form>
+@section scripts
+    {
+    <script type="text/javascript">
+
+        function signedin() {
+            document.getElementById('signin').style.visibility = 'hidden';
+            document.getElementById('CMS').style.visibility = 'visible';
+            document.getElementById('CMS1').style.visibility = 'visible';
+        }
+
+        function notsignedin() {
+            document.getElementById('signin').style.visibility = 'visible';
+            document.getElementById('CMS').style.visibility = 'hidden';
+            document.getElementById('CMS1').style.visibility = 'hidden';
+        }
+    </script>
+}

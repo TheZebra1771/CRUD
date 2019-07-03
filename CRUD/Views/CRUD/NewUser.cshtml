@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "NewUser";
+}
+
+<h2>NewUser</h2>
+
+<form action="/CRUD/AddNewUser" method="post">
+    Username: <input type="text" name="username"><br />
+    Password:<input type="text" name="password" /><br />
+    <input type="radio" name="authorized"value="authorized" /> Authorized <br />
+    <input type="submit" value="Submit">
+</form>

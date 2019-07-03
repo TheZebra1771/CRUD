@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script>notsignedin();</script>
+@{
+    if (Session["signedin"] == "1")
+    {
+        <script>signedin();</script>
+    }
+}
+
+<style>
+
+    p {
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    div {
+        margin-bottom: 5px;
+    }
+</style>
+
+@foreach (var d in ViewBag.indexarticles)
+{
+    <div>
+        @{string a = d.Contents; }
+        <center><h1>@d.Title</h1></center>
+        <p>@a</p>
+        <br />
+    </div>
+}
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+        function signedin() {
+            document.getElementById('signin').style.visibility = 'hidden';
+            document.getElementById('CMS').style.visibility = 'visible';
+            document.getElementById('CMS1').style.visibility = 'visible';
+        }
+
+        function notsignedin() {
+            document.getElementById('signin').style.visibility = 'visible';
+            document.getElementById('CMS').style.visibility = 'hidden';
+            document.getElementById('CMS1').style.visibility = 'hidden';
+        }
+    </script>
+}
